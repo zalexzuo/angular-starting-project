@@ -1,0 +1,39 @@
+<h2>Products</h2>
+
+<!-- With *ngFor, the <div> repeats for each product in the list. -->
+<div *ngFor="let product of products">
+
+<!-- the data come from 'product.ts' -->
+<h3>
+  <a [title]="product.name + ' details'"
+     [routerLink]="['/products', product.id]"
+  >
+  {{ product.name }}
+  </a>
+</h3>
+<!-- Property binding [ ] lets you use the property value in a template expression. -->
+
+<!-- *ngIf renders the elements when the condition is truthy -->
+<p *ngIf="product.description">
+  Description: {{ product.description }}
+</p>
+
+<!-- the click event comes from 'product-list.component.ts' -->
+<button type="button" (click)="share()">
+  Share
+</button>
+
+<!-- for displaying the component and pass the value to it -->
+<app-product-alerts
+  [product]="product"
+  (notify)="onNotify()">
+</app-product-alerts>
+
+
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
